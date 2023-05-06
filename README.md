@@ -148,6 +148,7 @@
           }
      ```
 1. Next we create the various interface types for the given data , with the discriminant being **kind** , which _will help in discriminating the values of the formed union_ .
+  
     ```javascript
       interface CoursePartBase {
         name: string;
@@ -173,3 +174,16 @@
       // This is the `discriminated union`, discriminating of the basis of the attribute `kind`
       type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground;
     ```
+
+#### _Type Narrowing discriminated union values_ :
+
+   > We have a problem here !!    
+   >
+   > TypeScript will only allow an operation (or attribute access) if it is _valid for every member of the union._
+   >
+   > So how do we go about solving this issue ? 
+   >
+   >_The solution is to narrow the union with code... Narrowing occurs when TypeScript can deduce a more specific type for a value based on the structure of the code._
+
+**One handy way to narrow these kinds of types in TypeScript is to use switch case expressions.**
+
