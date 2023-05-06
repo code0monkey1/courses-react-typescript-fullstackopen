@@ -78,7 +78,7 @@
          "lint": "eslint './src/**/*.{ts,tsx}'"
      ```
 
-1. Create your first REact Typescript Component : https
+1. Create your first REact Typescript Component :
     ```javascript
             interface WelcomeProps {
             name: string;
