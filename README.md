@@ -60,3 +60,8 @@
     }
 }
  ```
+
+### Explanation for our disabled rules in `.eslintrc`:
+
+`"@typescript-eslint/explicit-function-return-type": 0,
+  "@typescript-eslint/explicit-module-boundary-types": 0`
