@@ -77,3 +77,17 @@
        //package.json
          "lint": "eslint './src/**/*.{ts,tsx}'"
      ```
+
+1. Create your first REact Typescript Component : https
+    ```javascript
+            interface WelcomeProps {
+            name: string;
+          }
+          
+      const Welcome = (props: WelcomeProps)  => {
+        return <h1>Hello, {props.name}</h1>;
+      };
+      
+      export default Welcome;
+
+    ```
