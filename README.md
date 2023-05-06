@@ -189,3 +189,16 @@
 >  We can then build a switch case around that attribute and TypeScript will know which attributes are available within each case block.
 >
 > **_The specific technique of type narrowing where a union type is narrowed based on literal attribute value is called discriminated union._**
+
+
+
+```javascript
+    /**
+     * Helper function for exhaustive type checking
+     */
+    const assertNever = (value: never): never => {
+      throw new Error(
+        `Unhandled discriminated union member: ${JSON.stringify(value)}`
+      );
+};
+```
