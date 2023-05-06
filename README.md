@@ -139,7 +139,7 @@
 > 
 ---
 
-1. First we create a `base type` consisting of the basic types (i.e `name` and `exerciseCount`)
+1. First we create a `CoursePartBase` consisting of the basic types (i.e `name` and `exerciseCount`)
    
      ```javascript
          interface CoursePartBase {
@@ -147,3 +147,29 @@
             exerciseCount: number;
           }
      ```
+1. Next we create the various interface types for the given data , with the discriminant being **kind** , which _will help in discriminating the values of the formed union_ .
+    ```javascript
+      interface CoursePartBase {
+        name: string;
+        exerciseCount: number;
+      }
+      
+      interface CoursePartBasic extends CoursePartBase {
+        description: string;
+        kind: "basic"
+      }
+      
+      interface CoursePartGroup extends CoursePartBase {
+        groupProjectCount: number;
+        kind: "group"
+      }
+      
+      interface CoursePartBackground extends CoursePartBase {
+        description: string;
+        backgroundMaterial: string;
+        kind: "background"
+      }
+
+      // This is the `discriminated union`, discriminating of the basis of the attribute `kind`
+      type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground;
+    ```
