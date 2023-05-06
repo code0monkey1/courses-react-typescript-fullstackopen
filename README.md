@@ -103,10 +103,10 @@
 ## Courses Frontend : 
 
 
-  ####  _Creating a Discriminated Union_ : 
+####  _Creating a Discriminated Union_ : 
 
-  > Suppose we have the following data :
-    
+  Suppose we have the following data :
+
   ```javascript
     
      const courseParts = [
@@ -133,4 +133,17 @@
       },
     ];
    ```
-  > We observe that we have the attribute `name` and `exerciseCount`  constant , but other attributes are different .
+> We observe that we have the attribute `name` and `exerciseCount`  constant , but other attributes are different .
+> 
+> So, to handle such a dataset , we can create a **discriminated union** in order to switch between the different types of `data types` gracefully.
+> 
+---
+
+1. First we create a `base type` consisting of the basic types (i.e `name` and `exerciseCount`)
+   
+     ```javascript
+         interface CoursePartBase {
+            name: string;
+            exerciseCount: number;
+          }
+     ```
