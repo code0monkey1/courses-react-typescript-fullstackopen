@@ -91,10 +91,10 @@
       export default Welcome;
 
     ```
- > Another things `Different` about this typescript react app is that ,  the element received by `document.getElementById(id)` has been explicitly cast by the initial setting.
+   > Another things `Different` about this typescript react app is that ,  the element received by `document.getElementById(root)` has been explicitly cast by the initial setting , as the return value of `document.getElementById(`root`)` is either `HTMLElement | null` , but the risk of casting it to HTML element is taken, as we are sure that the element with the `id:root` will be present in every react app .
     
-  ```javascript
-      const root = ReactDOM.createRoot(
-        document.getElementById('root') as HTMLElement // done automatically
-        );
-  ```
+    ```javascript
+        const root = ReactDOM.createRoot(
+          document.getElementById('root') as HTMLElement // done automatically
+          );
+    ```
