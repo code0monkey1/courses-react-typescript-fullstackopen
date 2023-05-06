@@ -1,17 +1,27 @@
+import React from 'react';
 
-interface ContentProps{
-   courses:Content[]
-}
-type Content={
- name: string,
- exerciseCount: number
-}
+type Course = {
+  name: string;
+  exerciseCount: number;
+  description?: string;
+  groupProjectCount?: number;
+  backgroundMaterial?: string;
+};
 
-const Content = ({courses}:ContentProps) => {
-  return (<>
-   {courses.map( c => <li key={c.name}> {c.name} {c.exerciseCount}</li>)}
-   </>
-  )
+interface CourseProps{
+  courses: Course[];
 }
 
-export default Content
+const Content = (props: CourseProps) => {
+  return (
+    <>
+      {props.courses.map((c) => (
+        <li key={c.name}>
+          {c.name} {c.exerciseCount}
+        </li>
+      ))}
+    </>
+  );
+};
+
+export default Content;
