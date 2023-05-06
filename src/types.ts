@@ -14,3 +14,9 @@ export interface CoursePartGroup extends CoursePartBase {
   groupProjectCount: number;
   kind:'group'
 }
+
+export interface CoursePartBackground extends CoursePartBase {
+  description: string;
+  backgroundMaterial: string;
+  kind:'background'
+}
