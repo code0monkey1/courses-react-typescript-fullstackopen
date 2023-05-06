@@ -91,3 +91,10 @@
       export default Welcome;
 
     ```
+ > Another things `Different` about this typescript react app is that ,  the element received by `document.getElementById(id)` has been explicitly cast by the initial setting.
+    
+  ```javascript
+      const root = ReactDOM.createRoot(
+        document.getElementById('root') as HTMLElement // done automatically
+        );
+  ```
