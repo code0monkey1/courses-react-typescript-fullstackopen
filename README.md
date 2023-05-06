@@ -98,3 +98,6 @@
           document.getElementById('root') as HTMLElement // done automatically
           );
     ```
+---
+
+## Courses Frontend : 
