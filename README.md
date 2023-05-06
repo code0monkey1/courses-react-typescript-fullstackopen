@@ -187,3 +187,5 @@
 > Once TypeScript has inferred that a variable is of `union type` and that `each type in the union contain a certain literal attribute (in our case kind)`, we can use that as a type identifier.
 > 
 >  We can then build a switch case around that attribute and TypeScript will know which attributes are available within each case block.
+>
+> **_The specific technique of type narrowing where a union type is narrowed based on literal attribute value is called discriminated union._**

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { CoursePart } from './types';
 
 interface CourseProps{
@@ -8,11 +8,11 @@ interface CourseProps{
 const Content = (props: CourseProps) => {
   return (
     <>
-      {props.courses.map((c) => (
+      {/* {props.courses.map((c) => (
         <li key={c.name}>
           {c.name} {c.exerciseCount}
         </li>
-      ))}
+      ))} */}
     </>
   );
 };
