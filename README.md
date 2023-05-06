@@ -61,20 +61,19 @@
             "react/react-in-jsx-scope": 0
           }
       }
-       ```
-  
-    ### Explanation for our disabled rules in `.eslintrc`:
-    
-    1. `"@typescript-eslint/explicit-function-return-type":0,   "@typescript-eslint/explicit-module-boundary-types": 0`
-    
-       >These 2 are disabled , because the return type of most React components in either `null` or `JSX.Element` , so we don't need to check for these every time.
+      ```
+    #### Explanation for our disabled rules in `.eslintrc`:
         
+    1. `"@typescript-eslint/explicit-function-return-type":0,   "@typescript-eslint/explicit-module-boundary-types": 0`
+        
+    > These 2 are disabled , because the return type of most React components in either `null` or `JSX.Element` , so we don't need to check for these every time.
+            
     1. `"react/react-in-jsx-scope": 0`  
-        >  We will also disable `react/react-in-jsx-scope` since importing React is no longer needed in every file.
-
+    >  We will also disable `react/react-in-jsx-scope` since importing React is no longer needed in every file.
+  
 1. Next, we need to get our linting script to parse `*.tsx files`, which are the TypeScript `equivalent of React's JSX files`. We can do that by altering our lint command in `package.json` to the following:
 
-  ```json
-    //package.json
-      "lint": "eslint './src/**/*.{ts,tsx}'"
-  ```
+     ```json
+       //package.json
+         "lint": "eslint './src/**/*.{ts,tsx}'"
+     ```
