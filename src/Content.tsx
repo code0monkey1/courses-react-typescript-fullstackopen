@@ -1,15 +1,8 @@
 import React from 'react';
-
-type Course = {
-  name: string;
-  exerciseCount: number;
-  description?: string;
-  groupProjectCount?: number;
-  backgroundMaterial?: string;
-};
+import { CoursePart } from './types';
 
 interface CourseProps{
-  courses: Course[];
+  courses: CoursePart[];
 }
 
 const Content = (props: CourseProps) => {

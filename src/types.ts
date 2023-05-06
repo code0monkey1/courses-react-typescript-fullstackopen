@@ -1,22 +1,23 @@
-
-
  interface CoursePartBase {
         name: string;
         exerciseCount: number;
   }
 
-export interface CoursePartBasic extends CoursePartBase {
+ interface CoursePartBasic extends CoursePartBase {
    description: string;
    kind:'basic'
 }
-
-export interface CoursePartGroup extends CoursePartBase {
+interface CoursePartGroup extends CoursePartBase {
   groupProjectCount: number;
   kind:'group'
 }
 
-export interface CoursePartBackground extends CoursePartBase {
+ interface CoursePartBackground extends CoursePartBase {
   description: string;
   backgroundMaterial: string;
   kind:'background'
 }
+
+// creating the discriminated union
+
+export type CoursePart = CoursePartBackground| CoursePartGroup | CoursePartBasic

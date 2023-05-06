@@ -150,10 +150,7 @@
 1. Next we create the various interface types for the given data , with the discriminant being **kind** , which _will help in discriminating the values of the formed union_ .
   
     ```javascript
-      interface CoursePartBase {
-        name: string;
-        exerciseCount: number;
-      }
+     
       
       interface CoursePartBasic extends CoursePartBase {
         description: string;
@@ -187,3 +184,6 @@
 
 **One handy way to narrow these kinds of types in TypeScript is to use switch case expressions.**
 
+> Once TypeScript has inferred that a variable is of `union type` and that `each type in the union contain a certain literal attribute (in our case kind)`, we can use that as a type identifier.
+> 
+>  We can then build a switch case around that attribute and TypeScript will know which attributes are available within each case block.
