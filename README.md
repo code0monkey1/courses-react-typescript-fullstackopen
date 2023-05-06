@@ -6,20 +6,25 @@
  > 1. `Missing` props will be detected
  > 1. Props with `wrong types` will be detected
 
+---
+ _# To create a new react typescript app , execute the following command_ :
+
 ```bash 
   npx create-react-app my-app --template typescript 
 ```
+---
 
 > Initial Difference in the project structure :  
 > 1. The `.js and .jsx` files are now `.ts and .tsx` files.
 >
 > 1. `root directory` contains a `tsconfig.json` file
 
-## If you need to migrate your React app from Javascript to Typescript : 
+### If you need to migrate your React app from Javascript to Typescript  : 
 
- > Set `allowJs` to `true`. This allows us to keep a mix of TypeScript and JavaScript in our react project (e.g. if you are in the process of transforming a JavaScript project into TypeScript or something like that)
+
+ > In the `tsconfig.json` file , Set `allowJs` to `true`. This allows us to keep a mix of TypeScript and JavaScript in our react project (e.g. if you are in the process of transforming a JavaScript project into TypeScript or something like that)
  >
- > Once the project has been totally transformed to Typescript , to create a pure TypeScript app, change that configuration to false ( `allowJs` : `false`)
+ > Once the project has been totally transformed to Typescript , to create a pure TypeScript app, change that configuration to false ( `allowJs` : `false`) **if creating a new typescript project , always keep it _false_**
 
 ---
 
