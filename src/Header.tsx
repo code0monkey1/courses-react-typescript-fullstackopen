@@ -1,12 +1,6 @@
 
-interface HeaderProps{
-  title: string;
-}
+const Header = ({ text }: { text: string }) => {
+  return <h1>{text}</h1>
+};
 
-const Header = ({title}:HeaderProps)=> {
-  return (
-    <h1>{title}</h1>
-  )
-}
-
-export default Header
+export default Header;

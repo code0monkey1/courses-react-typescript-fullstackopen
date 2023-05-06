@@ -1,23 +1,30 @@
- interface CoursePartBase {
-        name: string;
-        exerciseCount: number;
-  }
-
- interface CoursePartBasic extends CoursePartBase {
-   description: string;
-   kind:'basic'
+interface CoursePartBase {
+  name: string;
+  exerciseCount: number;
 }
+
+interface CoursePartBaseWithDescription extends CoursePartBase {
+  description: string;
+}
+
+
+interface CoursePartBasic extends CoursePartBaseWithDescription {
+  kind: "basic"
+}
+
 interface CoursePartGroup extends CoursePartBase {
   groupProjectCount: number;
-  kind:'group'
+  kind: "group"
 }
 
- interface CoursePartBackground extends CoursePartBase {
-  description: string;
-  backgroundMaterial: string;
-  kind:'background'
+interface CoursePartBackround extends CoursePartBaseWithDescription {
+  backroundMaterial: string;
+  kind: "background"
 }
 
-// creating the discriminated union
+interface CoursePartSpecial extends CoursePartBaseWithDescription {
+  requirements: string[];
+  kind: "special"
+}
 
-export type CoursePart = CoursePartBackground| CoursePartGroup | CoursePartBasic
+export type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackround | CoursePartSpecial;

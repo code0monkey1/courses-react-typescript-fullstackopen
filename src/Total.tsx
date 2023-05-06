@@ -1,22 +1,16 @@
-import React from 'react'
+import { CoursePart } from './types';
 
-interface ContentProps{
-   courses:Content[]
-}
-type Content={
- name: string,
- exerciseCount: number
+type Props = { 
+  parts: CoursePart[]
 }
 
-const Total = ({courses}:ContentProps) => {
+const Total = ({ parts }: Props) => {
   return (
-    <div>{
-       <p>
-        Number of exercises{" "}
-        {courses.reduce((carry, part) => carry + part.exerciseCount,0)}
-      </p>
-      }</div>
+    <p>
+      Number of exercises{" "}
+      {parts.reduce((carry, part) => carry + part.exerciseCount, 0)}
+    </p>
   )
-}
+};
 
 export default Total;
