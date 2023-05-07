@@ -1,30 +1,29 @@
-interface CoursePartBase {
-  name: string;
-  exerciseCount: number;
+interface ParentCourse{
+  name: string,
+  exerciseCount: number
 }
 
-interface CoursePartBaseWithDescription extends CoursePartBase {
-  description: string;
+interface BasicCourse extends ParentCourse{
+  description: string
+  kind:'basic'
 }
 
-
-interface CoursePartBasic extends CoursePartBaseWithDescription {
-  kind: "basic"
+interface GroupCourse extends ParentCourse{
+  groupProjectCount: number,
+  kind:'group'
 }
 
-interface CoursePartGroup extends CoursePartBase {
-  groupProjectCount: number;
-  kind: "group"
+interface BackgroundCourse extends ParentCourse{
+  description: string,
+  backgroundMaterial:string,
+  kind:"background"
 }
 
-interface CoursePartBackround extends CoursePartBaseWithDescription {
-  backroundMaterial: string;
-  kind: "background"
+interface SpecialCourse extends ParentCourse{
+
+  description:string,
+  requirements:string[],
+  kind:"special"
 }
 
-interface CoursePartSpecial extends CoursePartBaseWithDescription {
-  requirements: string[];
-  kind: "special"
-}
-
-export type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackround | CoursePartSpecial;
+export type Course = GroupCourse | BackgroundCourse | SpecialCourse | BasicCourse

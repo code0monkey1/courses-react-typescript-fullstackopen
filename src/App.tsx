@@ -1,57 +1,13 @@
 import Content from './Content';
 import Header from './Header';
 import Total from './Total';
-import { CoursePart } from "./types";
-
-const assertNever = (value: never): never => {
-  throw new Error(
-    `Unhandled discriminated union member: ${JSON.stringify(value)}`
-  );
-
-};
-
-
-const Part = ({ part }: { part: CoursePart }) => {
-  let details = null;
-  switch (part.kind) {
-    case "basic":
-      details = <i>{part.description}</i>
-      break;
-    case "group":
-      details = <p> project exercises: {part.groupProjectCount}</p>
-      break;
-    case "background":
-      details = (
-        <>
-           <i>{part.description}</i>
-           <p>for more info see {part.backroundMaterial}</p>
-        </>
-      )
-      break;
-    case "special":
-      details = (
-        <>
-            <i>{part.description}</i>
-            <p>required skills: {part.requirements.join(', ')}</p>
-        </>
-      )
-      break;
-    default:
-      return assertNever(part);
-  }
-
-  return (
-    <div>
-      <h4>{part.name} (exercises {part.exerciseCount})</h4>
-      <>{details}</>
-    </div>
-  )
-}
+import { Course } from './types';
 
 
 const App = () => {
   const courseName = "Half Stack application development";
-  const courseParts: CoursePart[] = [
+  
+  const courseParts: Course[] = [
     {
       name: "Fundamentals",
       exerciseCount: 10,
@@ -74,7 +30,7 @@ const App = () => {
       name: "Deeper type usage",
       exerciseCount: 14,
       description: "Confusing description",
-      backroundMaterial: "https://type-level-typescript.com/template-literal-types",
+      backgroundMaterial: "https://type-level-typescript.com/template-literal-types",
       kind: "background"
     },
     {
@@ -95,8 +51,8 @@ const App = () => {
   return (
     <div>
       <Header text={courseName} />
-      <Content parts={courseParts} />
-      <Total parts={courseParts} />
+      <Content courses={courseParts} />
+      <Total courses={courseParts} />
     </div>
   );
 };

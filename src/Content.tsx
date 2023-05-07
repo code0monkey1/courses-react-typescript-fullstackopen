@@ -1,38 +1,51 @@
 
-import { CoursePart } from './types';
+// import { CoursePart } from './types';
 
+import { Course } from "./types";
 
 type Props = { 
-  parts: CoursePart[]
+  courses: Course[]
 }
+const assertNever = (value: never): never => {
+  throw new Error(
+    `Unhandled discriminated union member: ${JSON.stringify(value)}`
+  );
 
-const Content = ({parts}: Props) => {
-       
-        let details = " "
-
-        parts.forEach(part => {
-             
-          switch(part.kind) {
-
-           case "basic":
-             details = part.description
-              break;
-           case "background":
-             details =part.backroundMaterial;
-             break;
-         
-           case "group" :
-            return 0;
-           case "special":
-            return -1;
-            default:
-              return -1;
-
-        }
-      })
-
-      return(<li>{details}</li>)
-      
 };
+
+const Content = ({courses}:Props) => {
+
+      return (
+
+        <ul>
+          {courses.map(course =><Part key={course.name} course={course} />)}
+        </ul>
+      )
+};
+
+const Part =({course}:{course:Course})=> {
+      
+      let description=""
+
+     switch (course.kind) {
+
+            case "basic":
+              description = course.description;
+              break;
+            case "background":
+               description= course.description +" "+ course.backgroundMaterial;
+               break;
+            case "group":
+               description = course.groupProjectCount+""
+               break;
+            case "special":
+               description = course.requirements.join("-")
+               break;   
+            default :
+              return  assertNever(course)
+           }
+
+    return <li>{description}</li>
+}
 
 export default Content;
