@@ -1,17 +1,13 @@
 
 // import { CoursePart } from './types';
+import { assertNever } from "./utils";
 
 import { Course } from "./types";
 
 type Props = { 
   courses: Course[]
 }
-const assertNever = (value: never): never => {
-  throw new Error(
-    `Unhandled discriminated union member: ${JSON.stringify(value)}`
-  );
 
-};
 
 const Content = ({courses}:Props) => {
 

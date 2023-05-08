@@ -142,34 +142,47 @@
 1. First we create a `CoursePartBase` consisting of the basic types (i.e `name` and `exerciseCount`)
    
      ```javascript
-         interface CoursePartBase {
-            name: string;
-            exerciseCount: number;
-          }
+       interface ParentCourse{
+        name: string,
+        exerciseCount: number
+      }
+
      ```
 1. Next we create the various interface types for the given data , with the discriminant being **kind** , which _will help in discriminating the values of the formed union_ .
   
     ```javascript
      
-      
-      interface CoursePartBasic extends CoursePartBase {
-        description: string;
-        kind: "basic"
-      }
-      
-      interface CoursePartGroup extends CoursePartBase {
-        groupProjectCount: number;
-        kind: "group"
-      }
-      
-      interface CoursePartBackground extends CoursePartBase {
-        description: string;
-        backgroundMaterial: string;
-        kind: "background"
-      }
+        interface ParentCourse{
+      name: string,
+      exerciseCount: number
+    }
 
-      // This is the `discriminated union`, discriminating of the basis of the attribute `kind`
-      type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground;
+    interface BasicCourse extends ParentCourse{
+      description: string
+      kind:'basic'
+    }
+    
+    interface GroupCourse extends ParentCourse{
+      groupProjectCount: number,
+      kind:'group'
+    }
+    
+    interface BackgroundCourse extends ParentCourse{
+      description: string,
+      backgroundMaterial:string,
+      kind:"background"
+    }
+    
+   interface SpecialCourse extends ParentCourse{
+
+      description:string,
+      requirements:string[],
+      kind:"special"
+    }
+    
+    // This represents the union of all the courses
+    export type Course = GroupCourse | BackgroundCourse | SpecialCourse | BasicCourse
+
     ```
 
 #### _Type Narrowing discriminated union values_ :
@@ -194,7 +207,7 @@
 
 ```javascript
     /**
-     * Helper function for exhaustive type checking
+     * Helper function for exhaustive type checking ( always youse in switch statements )
      */
     const assertNever = (value: never): never => {
       throw new Error(
