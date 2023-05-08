@@ -21,27 +21,42 @@ const Content = ({courses}:Props) => {
 
 const Part =({course}:{course:Course})=> {
       
-      let description=""
+      let details=null
 
      switch (course.kind) {
 
             case "basic":
-              description = course.description;
+              details=<>
+                <i>Description : {course.description}</i>
+              </>
               break;
             case "background":
-               description= course.description +" "+ course.backgroundMaterial;
+               details=<>
+                <i>Description : {course.description}</i>
+                <p>Background Material : {course.backgroundMaterial}</p>
+               </>
                break;
             case "group":
-               description = course.groupProjectCount+""
+               details=<>
+                 <p>Group Project Count: {course.groupProjectCount}</p>
+               </>  
                break;
             case "special":
-               description = course.requirements.join("-")
+               details = <>
+                  <i>Description : {course.description}</i>
+                  <ul>Requirements: {course.requirements.join(", ")} </ul> 
+               </>
                break;   
             default :
               return  assertNever(course)
            }
 
-    return <li>{description}</li>
+    return <li>
+       <h2>Name :{course.name}</h2>
+       <h3>{details}</h3>
+       <h4>Exercise Count:{course.exerciseCount}</h4>
+       <hr/>
+      </li>
 }
 
 export default Content;
