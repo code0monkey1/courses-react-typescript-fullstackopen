@@ -215,3 +215,72 @@
       );
 };
 ```
+
+### This is how we gracefully render the components from a discriminated union :
+
+```javascript
+
+import { assertNever } from "./utils";
+
+import { Course } from "./types";
+
+type Props = { 
+  courses: Course[]
+}
+
+
+const Content = ({courses}:Props) => {
+
+      return (
+
+        <ul>
+          {courses.map(course =><Part key={course.name} course={course} />)}
+        </ul>
+      )
+};
+
+// This will render each Course type as per the switch statement based on the `kind` it is : 
+
+const Part =({course}:{course:Course})=> {
+      
+      let details=null
+
+     switch (course.kind) {
+
+            case "basic":
+              details=<>
+                <i>Description : {course.description}</i>
+              </>
+              break;
+            case "background":
+               details=<>
+                <i>Description : {course.description}</i>
+                <p>Background Material : {course.backgroundMaterial}</p>
+               </>
+               break;
+            case "group":
+               details=<>
+                 <p>Group Project Count: {course.groupProjectCount}</p>
+               </>  
+               break;
+            case "special":
+               details = <>
+                  <i>Description : {course.description}</i>
+                  <ul>Requirements: {course.requirements.join(", ")} </ul> 
+               </>
+               break;   
+            default :
+              return  assertNever(course)
+           }
+
+    return <li>
+       <h2>Name :{course.name}</h2>
+       <h3>{details}</h3>
+       <h4>Exercise Count:{course.exerciseCount}</h4>
+       <hr/>
+      </li>
+}
+
+export default Content;
+
+```
