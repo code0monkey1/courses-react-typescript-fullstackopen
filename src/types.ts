@@ -27,3 +27,7 @@ interface SpecialCourse extends ParentCourse{
 }
 
 export type Course = GroupCourse | BackgroundCourse | SpecialCourse | BasicCourse
+
+type Prettify<T> ={
+  [K in keyof T]: T[K];
+} ;
